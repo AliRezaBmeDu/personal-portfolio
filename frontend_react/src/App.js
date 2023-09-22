@@ -1,7 +1,9 @@
 import React from 'react';
 
-import { About, Footer, SKills, Testimonial, Header, Work, Skills } from './container';
+import { About, Footer, Skills, Testimonial, Header, Work } from './container';
 import Navbar from './components/Navbar/Navbar';
+
+import './App.scss';
 
 const App = () => {
   return (
