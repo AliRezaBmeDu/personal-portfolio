@@ -14,8 +14,8 @@ const abouts = [
 const About = () => {
   return (
     <React.Fragment>
-      <h2 className='haed-text'>
-        I Know that <span>Good Design</span>
+      <h2 className='head-text'>
+        I Know that <span>Good Development</span>
         <br/>
         means <span>Good Business</span>
       </h2>
