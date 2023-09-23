@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import './About.scss';
+import { AppWrap } from '../../wrapper';
 
 import { images } from '../../constants';
 import { urlFor, client } from '../../client';
@@ -19,7 +20,7 @@ const About = () => {
     const query = '*[_type == "abouts"]';
     client.fetch(query)
       .then((data) => {
-        setAbouts(data)
+        setAbouts(data);
       })
   }, [])
   return (
@@ -51,4 +52,4 @@ const About = () => {
   )
 }
 
-export default About
+export default AppWrap(About, 'about');
