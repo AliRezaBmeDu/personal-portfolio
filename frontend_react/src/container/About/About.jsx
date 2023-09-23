@@ -15,11 +15,9 @@ const About = () => {
   return (
     <React.Fragment>
       <h2 className='haed-text'>
-        I Know that
-        <span>Good Design</span>
+        I Know that <span>Good Design</span>
         <br/>
-        means
-        <span>Good Business</span>
+        means <span>Good Business</span>
       </h2>
 
       <div className='app__profiles'>
