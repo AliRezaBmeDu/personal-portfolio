@@ -34,6 +34,7 @@ const Testimonial = () => {
     <React.Fragment>
       {testimonials.length && (
         <React.Fragment>
+          {console.log('testimonials', testimonials)}
           <div className='app__testimonial-item app__flex'>
             <img src={urlFor(test.imgurl)} alt="testimonals" />
             <div className='app__testimonial-content'>
@@ -43,7 +44,7 @@ const Testimonial = () => {
                 <h5 className='p-text'>{test.company}</h5>
               </div>
             </div>
-            </div>
+          </div>
           <div className='app__testimonial-btns app__flex'>
               <div className='app__flex' onClick={()=> handleClick(currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1)}>
                 <HiChevronLeft />
