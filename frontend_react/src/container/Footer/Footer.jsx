@@ -17,14 +17,26 @@ const Footer = () => {
   const { name, email, message } = formData;
 
   const handleChangeInput = (e) => {
-    const { name, value } = e.input;
+    const { name, value } = e.target;
     setFormData({...formData, [name]: value})
   }
 
   const handleSubmit = () => {
     setLoading(true);
+    const contact = {
+      _type: 'contact',
+      name: name,
+      email: email,
+      message: message,
+    }
+
+    client.create(contact)
+    .then(() => {
+      setLoading(false);
+      setIsFormSubmitted(true);
+    })
   }
-  
+
   return (
     <React.Fragment>
       <h2 className='head-text'>If you need any assistance to develop your website, please don't hesitate to contact me</h2>
