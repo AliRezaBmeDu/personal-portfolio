@@ -7,7 +7,7 @@ import './Testimonial.scss';
 
 const Testimonial = () => {
   const [brands, setBrands] = useState([]);
-  const [testimotials, setTestimonials] = useState([]);
+  const [testimonials, setTestimonials] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -24,8 +24,21 @@ const Testimonial = () => {
     })
   }, [])
   return (
-    <div>Testimonial</div>
+    <React.Fragment>
+      {testimonials.length && (
+        <React.Fragment>
+          <div className='app__testimonal-item app__flex'>
+          {console.log('testimonials', testimonials)}
+          <img src={urlFor(testimonials[currentIndex].imgurl)} alt="testimonals" />
+          </div>
+        </React.Fragment>
+      )}
+    </React.Fragment>
   )
 }
 
-export default Testimonial;
+export default AppWrap(
+  MotionWrap(Testimonial, 'app__testimonial'), 
+  'testimonials',
+  "app__primarybg"
+  );

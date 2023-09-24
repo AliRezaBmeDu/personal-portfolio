@@ -13,8 +13,8 @@ export default {
             type: 'string'
         },
         {
-            name: 'imageUrl',
-            title: 'IgmURL',
+            name: 'imgurl',
+            title: 'ImgURL',
             type: 'image',
             options: {
                 hotspot: 'true',
