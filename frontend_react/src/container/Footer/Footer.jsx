@@ -49,7 +49,8 @@ const Footer = () => {
         <a href='tel: +880 1876-863-547' className='p-text'>+880 1876-863-547</a>
       </div>
 
-      <div className='app__footer-form app__flex'>
+      {!isFormSubmitted ?
+        <div className='app__footer-form app__flex'>
         <div className='app__flex'>
           <input className='p-text' type='text' placeholder='Your Name' name='name' value={name} onChange={handleChangeInput} />
         </div>
@@ -68,6 +69,10 @@ const Footer = () => {
         </div>
         <button type='button' className='p-text' onClick={handleSubmit}>{loading ? 'sending' : 'send message'}</button>
       </div>
+    : <div>
+        <h3 className='head-text'>Thank you for getting in touch!</h3>
+      </div>
+  }
     </React.Fragment>
   )
 }
