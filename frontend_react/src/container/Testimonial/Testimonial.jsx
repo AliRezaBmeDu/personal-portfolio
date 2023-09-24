@@ -27,7 +27,7 @@ const Testimonial = () => {
     <React.Fragment>
       {testimonials.length && (
         <React.Fragment>
-          <div className='app__testimonal-item app__flex'>
+          <div className='app__testimonial-item app__flex'>
           {console.log('testimonials', testimonials)}
           <img src={urlFor(testimonials[currentIndex].imgurl)} alt="testimonals" />
           </div>
