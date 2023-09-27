@@ -41,12 +41,14 @@ const Footer = () => {
     <React.Fragment>
       <h2 className='head-text'>If you need any assistance to develop your website, please don't hesitate to contact me</h2>
       <div className='app__footer-cards'>
-        <img src={images.email} alt='email' />
-        <a href='mailto:ali.reza.buet@gmail.com' className='p-text'>ali.reza.buet@gmail.com</a>
-      </div>
-      <div className='app__footer-cards'>
-        <img src={images.mobile} alt='mobile' />
-        <a href='tel: +880 1876-863-547' className='p-text'>+880 1876-863-547</a>
+        <div className='app__footer-card'>
+          <img src={images.email} alt='email' />
+          <a href='mailto:ali.reza.buet@gmail.com' className='p-text'>ali.reza.buet@gmail.com</a>
+        </div>
+        <div className='app__footer-card'>
+          <img src={images.mobile} alt='mobile' />
+          <a href='tel: +880 1876-863-547' className='p-text'>+880 1876-863-547</a>
+        </div>
       </div>
 
       {!isFormSubmitted ?
@@ -62,7 +64,7 @@ const Footer = () => {
             className='p-text'
             placeholder='Your Message'
             value={message}
-            name={message}
+            name="message"
             onChange={handleChangeInput}
           >
           </textarea>
@@ -72,7 +74,7 @@ const Footer = () => {
     : <div>
         <h3 className='head-text'>Thank you for getting in touch!</h3>
       </div>
-  }
+    }
     </React.Fragment>
   )
 }
