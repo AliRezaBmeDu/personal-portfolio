@@ -12,7 +12,7 @@ const Testimonial = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const query = '*[_type=="testimonials"]';
+    const query = '*[_type=="credentials"]';
     const brandsQuery = '*[_type=="brands"]';
     client.fetch(query)
       .then((data) => {
@@ -34,7 +34,6 @@ const Testimonial = () => {
     <React.Fragment>
       {testimonials.length && (
         <React.Fragment>
-          {console.log('testimonials', testimonials)}
           <div className='app__testimonial-item app__flex'>
             <img src={urlFor(test.imgurl)} alt="testimonals" />
             <div className='app__testimonial-content'>
