@@ -12,7 +12,7 @@ const Testimonial = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const query = '*[_type=="testimonials"]';
+    const query = '*[_type=="credentials"]';
     const brandsQuery = '*[_type=="brands"]';
     client.fetch(query)
       .then((data) => {
@@ -43,7 +43,7 @@ const Testimonial = () => {
                 <h5 className='p-text'>{test.company}</h5>
               </div>
             </div>
-            </div>
+          </div>
           <div className='app__testimonial-btns app__flex'>
               <div className='app__flex' onClick={()=> handleClick(currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1)}>
                 <HiChevronLeft />
