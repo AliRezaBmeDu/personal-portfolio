@@ -11,6 +11,16 @@ const Work = () => {
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
   const [works, setWorks] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
+  //Pop-up card
+  const [selectedWork, setSelectedWork] = useState(null);
+
+  const handleDetailsClick = (work) => {
+    setSelectedWork(work);
+  };
+
+  const handleCloseClick = () => {
+    setSelectedWork(null);
+  };
 
   useEffect(() => {
     const query = '*[_type=="works"]';
@@ -93,9 +103,17 @@ const Work = () => {
                 </motion.div>
               </div>
 
-              <div className='app__work-content app__flex'>
+              <div 
+                className='app__work-content app__flex'
+                onClick={() => handleDetailsClick(work)}
+              >
                 <h4 className='bold-text'>{work.title}</h4>
-                <p className='p-text' style={{ marginTop: 10 }}>{work.description}</p>
+                <p
+                 className='p-text details-card' 
+                 style={{ marginTop: 10 }}
+                >
+                  {work.description.length > 100 ? `${work.description.slice(0, 100)}...` : work.description}
+                </p>
                 <div className='app__work-tag' app__flex>
                   <p className='p-text'>{work.tags[0]}</p>
                 </div>
@@ -103,6 +121,28 @@ const Work = () => {
             </div>
           ))}
       </motion.div>
+
+      {selectedWork && (
+        <motion.div
+          animate={animateCard}
+          transition={{ duration: 0.5, delayChildren: 0.5 }}
+          className='app__work-popup'
+        >
+          <div className='app__work-popup-content'>
+            <span className='app__work-popup-close' onClick={handleCloseClick}>
+              &times;
+            </span>
+            <div className='app__work-popup-img'>
+              <img src={urlFor(selectedWork.imgUrl)} alt={selectedWork.name} className='popup-img'/>
+            </div>
+            <div>
+              <h4 className='bold-text'>{selectedWork.title}</h4>
+              <p className='p-text'>{selectedWork.description}</p>
+              {/* Add other details as needed */}
+            </div>
+          </div>
+        </motion.div>
+      )}
 
     </React.Fragment>
   )

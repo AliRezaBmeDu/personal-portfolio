@@ -26,9 +26,8 @@ const About = () => {
   return (
     <React.Fragment>
       <h2 className='head-text'>
-        I Know that <span>Good Development</span>
-        <br/>
-        means <span>Good Business</span>
+        I’m a <span>software developer!</span> I can help you build 
+        a <span>product , feature </span> or <span>website.</span>
       </h2>
 
       <div className='app__profiles'>
