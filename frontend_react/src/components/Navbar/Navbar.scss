@@ -18,12 +18,13 @@
     align-items: center;
 
     img {
-        width: 90px;
-        height: 20px;
+        width: 150px;
+        height: 60px;
+        margin-left: 1rem;
 
         @media screen and (min-width: 2000px){
-            width: 180px;
-            height: 40px;
+            width: 150px;
+            height: 60px;
         }
     }
 }
@@ -46,7 +47,6 @@
             height: 5px;
             background: transparent;
             border-radius: 50%;
-
             margin-bottom: 5px;
         }
 
@@ -56,6 +56,7 @@
             flex-direction: column;
             text-transform: uppercase;
             font-weight: 500;
+            font-size: 0.8rem;
 
             transition: all 0.3s ease-in-out;
 
