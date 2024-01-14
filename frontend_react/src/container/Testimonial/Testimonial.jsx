@@ -32,6 +32,9 @@ const Testimonial = () => {
   }
   return (
     <React.Fragment>
+      <h2 className='head-text'>
+        Cerficates and <span>Testimonials</span>
+      </h2>
       {testimonials.length && (
         <React.Fragment>
           <div className='app__testimonial-item app__flex'>
