@@ -25,5 +25,10 @@ export default {
             title: 'Feedback',
             type: 'string'
         },
+        {
+            name: 'credentialurl',
+            title: 'CredentialURL',
+            type: 'string'
+        },
     ]
 }

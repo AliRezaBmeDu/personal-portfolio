@@ -32,6 +32,9 @@ const Testimonial = () => {
   }
   return (
     <React.Fragment>
+      <h2 className='head-text'>
+        Certificates and <span>Testimonials</span>
+      </h2>
       {testimonials.length && (
         <React.Fragment>
           <div className='app__testimonial-item app__flex'>
@@ -41,6 +44,7 @@ const Testimonial = () => {
               <div>
                 <h4 className='bold-text'>{test.name}</h4>
                 <h5 className='p-text'>{test.company}</h5>
+                <a href={test.credentialurl} target='_blank' rel='noreferrer'>View Source</a>
               </div>
             </div>
           </div>

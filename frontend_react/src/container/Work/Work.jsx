@@ -1,16 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { AiFillEye, AiFillGithub } from 'react-icons/ai';
+import { FaEye } from "react-icons/fa6";
 import { motion } from 'framer-motion';
 import './Work.scss';
 
 import { AppWrap, MotionWrap } from '../../wrapper';
 import { urlFor, client } from '../../client';
+import { BsGithub } from 'react-icons/bs';
 
 const Work = () => {
   const [activeFilter, setActiveFilter] = useState('All');
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
+  const [isHovered, setIsHovered] = useState(false);
   const [works, setWorks] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
+  //Pop-up card
+  const [selectedWork, setSelectedWork] = useState(null);
+
+  const buttonVariants = {
+    rest: { scale: 1 },
+    hover: { scale: 1.1 },
+  };
+
+  const handleDetailsClick = (work) => {
+    setSelectedWork(work);
+  };
+
+  const handleCloseClick = () => {
+    setSelectedWork(null);
+  };
 
   useEffect(() => {
     const query = '*[_type=="works"]';
@@ -93,9 +111,17 @@ const Work = () => {
                 </motion.div>
               </div>
 
-              <div className='app__work-content app__flex'>
+              <div 
+                className='app__work-content app__flex'
+                onClick={() => handleDetailsClick(work)}
+              >
                 <h4 className='bold-text'>{work.title}</h4>
-                <p className='p-text' style={{ marginTop: 10 }}>{work.description}</p>
+                <p
+                 className='p-text details-card' 
+                 style={{ marginTop: 10 }}
+                >
+                  {work.description.length > 100 ? `${work.description.slice(0, 100)}...` : work.description}
+                </p>
                 <div className='app__work-tag' app__flex>
                   <p className='p-text'>{work.tags[0]}</p>
                 </div>
@@ -103,6 +129,57 @@ const Work = () => {
             </div>
           ))}
       </motion.div>
+
+      {selectedWork && (
+        <motion.div
+          animate={animateCard}
+          transition={{ duration: 0.5, delayChildren: 0.5 }}
+          className='app__work-popup'
+        >
+          <div className='app__work-popup-content'>
+            <span className='app__work-popup-close' onClick={handleCloseClick}>
+              &times;
+            </span>
+            <div className='app__work-popup-img'>
+              <img src={urlFor(selectedWork.imgUrl)} alt={selectedWork.name} />
+            </div>
+            <div className='app__work-popup-text'>
+              <h4 className='bold-text'>{selectedWork.title}</h4>
+              <p className='p-text'>{selectedWork.description}</p>
+              {/* Add other details as needed */}
+            </div>
+            <motion.div 
+              className='popup-btn-container'
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="rest"
+            >
+              
+                <a href={selectedWork.codeLink} target='_blank' rel='noreferrer'
+                >
+                  <button
+                    className="transition-button"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                  >
+                    See source <BsGithub />
+                  </button>
+                </a>
+              
+                <a href={selectedWork.projectLink} target='_blank' rel='noreferrer'
+                >
+                  <button
+                    className="transition-button"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                  >
+                    See live <FaEye />
+                  </button>
+                </a>
+            </motion.div>
+          </div>
+        </motion.div>
+      )}
 
     </React.Fragment>
   )

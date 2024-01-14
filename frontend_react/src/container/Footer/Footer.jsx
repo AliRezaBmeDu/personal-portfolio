@@ -39,7 +39,7 @@ const Footer = () => {
 
   return (
     <React.Fragment>
-      <h2 className='head-text'>If you need any assistance to develop your website, please don't hesitate to contact me</h2>
+      <h2 className='head-text'>If you need any assistance to <span>develop your website</span>, please don't hesitate to <span>contact me</span></h2>
       <div className='app__footer-cards'>
         <div className='app__footer-card'>
           <img src={images.email} alt='email' />
@@ -52,7 +52,7 @@ const Footer = () => {
       </div>
 
       {!isFormSubmitted ?
-        <div className='app__footer-form app__flex'>
+      <div className='app__footer-form app__flex'>
         <div className='app__flex'>
           <input className='p-text' type='text' placeholder='Your Name' name='name' value={name} onChange={handleChangeInput} />
         </div>
@@ -73,6 +73,7 @@ const Footer = () => {
       </div>
     : <div>
         <h3 className='head-text'>Thank you for getting in touch!</h3>
+        <h4><span>Please refresh</span></h4>
       </div>
     }
     </React.Fragment>
