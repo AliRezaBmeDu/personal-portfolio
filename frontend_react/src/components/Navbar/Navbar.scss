@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 0.5rem 2rem;
     background: rgba(255,255,255,0.25);
     backdrop-filter: blur(4p);
     -webkit-backdrop-filter: blur(4px);
@@ -18,8 +18,8 @@
     align-items: center;
 
     img {
-        width: 150px;
-        height: 60px;
+        width: 130px;
+        height: 50px;
         margin-left: 1rem;
 
         @media screen and (min-width: 2000px){
@@ -56,7 +56,6 @@
             flex-direction: column;
             text-transform: uppercase;
             font-weight: 500;
-            font-size: 0.8rem;
 
             transition: all 0.3s ease-in-out;
 
