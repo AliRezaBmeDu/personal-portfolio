@@ -2,7 +2,7 @@
     --card-width-lg: 30vw;
     --card-width-md: 45vw;
     --card-width-sm:  80vw;
-    --card-height-lg: 50vh;
+    --card-height-lg: 90vh;
     --card-height-md:75vh;
     --card-height-sm: 90vh;
 }
@@ -197,7 +197,7 @@
     position: relative;
     width: var(--card-width-lg);
     max-height: var(--card-height-lg);
-    min-height: calc(0.7 * var(--card-height-lg));
+    min-height: calc(0.5 * var(--card-height-lg));
     overflow-y: auto;
 
     @media screen and (max-width: 1192px) {
@@ -214,13 +214,25 @@
   }
   
   .app__work-popup-img {
-    object-fit: cover;
-    margin-bottom: 1rem; /* Adjust spacing between image and description */
+    width: 100%;
+    height: 350px;
+    position: relative;
+
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 0.5rem;
+        object-fit: contain;
+
+    }
+
   }
 
-  .popup-img {
-    width: 100%;
-    height: 100%;
+  .app__work-popup-text {
+    margin-top: 8px;
+    h4 {
+        margin-bottom: 10px;
+    }
   }
   
   .app__work-popup-close {
@@ -251,6 +263,25 @@
       &:hover {
         color: #007bff; /* Change to your preferred link hover color */
       }
+    }
+  }
+
+  .popup-btn-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+
+    button {
+        height: 40px;
+        padding: 10px;
+        background-color: lightcyan;
+        border-radius: 4px;
+        border: #88678f 1px solid;
+    }
+
+    button:hover {
+        background-color: var(--lightGray-color);
+        
     }
   }
   

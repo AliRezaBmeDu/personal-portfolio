@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { AiFillEye, AiFillGithub } from 'react-icons/ai';
+import { FaEye } from "react-icons/fa6";
 import { motion } from 'framer-motion';
 import './Work.scss';
 
 import { AppWrap, MotionWrap } from '../../wrapper';
 import { urlFor, client } from '../../client';
+import { BsGithub } from 'react-icons/bs';
 
 const Work = () => {
   const [activeFilter, setActiveFilter] = useState('All');
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
+  const [isHovered, setIsHovered] = useState(false);
   const [works, setWorks] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
   //Pop-up card
   const [selectedWork, setSelectedWork] = useState(null);
+
+  const buttonVariants = {
+    rest: { scale: 1 },
+    hover: { scale: 1.1 },
+  };
 
   const handleDetailsClick = (work) => {
     setSelectedWork(work);
@@ -133,13 +141,42 @@ const Work = () => {
               &times;
             </span>
             <div className='app__work-popup-img'>
-              <img src={urlFor(selectedWork.imgUrl)} alt={selectedWork.name} className='popup-img'/>
+              <img src={urlFor(selectedWork.imgUrl)} alt={selectedWork.name} />
             </div>
-            <div>
+            <div className='app__work-popup-text'>
               <h4 className='bold-text'>{selectedWork.title}</h4>
               <p className='p-text'>{selectedWork.description}</p>
               {/* Add other details as needed */}
             </div>
+            <motion.div 
+              className='popup-btn-container'
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="rest"
+            >
+              
+                <a href={selectedWork.codeLink} target='_blank' rel='noreferrer'
+                >
+                  <button
+                    className="transition-button"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                  >
+                    See source <BsGithub />
+                  </button>
+                </a>
+              
+                <a href={selectedWork.projectLink} target='_blank' rel='noreferrer'
+                >
+                  <button
+                    className="transition-button"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                  >
+                    See live <FaEye />
+                  </button>
+                </a>
+            </motion.div>
           </div>
         </motion.div>
       )}
